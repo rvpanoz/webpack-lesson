@@ -1,12 +1,11 @@
-<p align="center">
-  <h3 align="center">Webpack lesson</h3>
-</p>
+# Webpack lesson
 
-<hr/>
+Introduction to Webpack 4
 
-<p>
-  <h4 align="center">Contents</h3>
-  <ul>
-  <li>Setup</li>
-  </ul>
-</p>
+## Covers
+
+1. Setup
+2. Configuration
+3. Building
+4. Development server
+5. Code splitting
