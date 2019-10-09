@@ -1,0 +1,12 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "sourceType": "module"
+    },
+    "plugins": ["react"],
+    "rules": {}
+}
