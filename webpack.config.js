@@ -16,11 +16,13 @@ module.exports = {
   output: {
     filename: '[name]-[hash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/' // for react-router
   },
   devServer: {
     contentBase: './dist',
     open: true,
-    port
+    port,
+    historyApiFallback: true // for react-router
   },
   plugins: [
     new HtmlWebpackPlugin({
