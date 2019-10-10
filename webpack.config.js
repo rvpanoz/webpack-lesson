@@ -34,6 +34,8 @@ module.exports = {
   resolve: {
     alias: {
       components: path.resolve(path.join(__dirname, 'src', 'components')),
+      images: path.resolve(path.join(__dirname, 'src', 'assets', 'images')),
+      styles: path.resolve(path.join(__dirname, 'src', 'assets', 'styles')),
     },
   },
   module: {
@@ -49,7 +51,11 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader', options: {
+              modules: true,
+            },
+          },
         ],
       },
       // WOFF Font

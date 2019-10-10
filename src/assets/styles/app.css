@@ -1,0 +1,26 @@
+@import 'https://fonts.googleapis.com/css?family=Ubuntu+Condensed';
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    height: auto;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+body {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    height: 100%;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
