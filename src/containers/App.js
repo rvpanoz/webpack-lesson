@@ -8,7 +8,7 @@ console.log(appStyles);
 
 // lazy does not support named export
 const Home = lazy(() => import('components/Home'));
-const About = lazy(() => import('components/About'));
+const Setup = lazy(() => import('components/Setup'));
 
 const App = () => <section>
     <ErrorBoundary>
@@ -16,7 +16,7 @@ const App = () => <section>
             <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
+                    <Route path="/setup" component={Setup} />
                 </Switch>
             </Suspense>
         </Router>

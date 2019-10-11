@@ -1,0 +1,20 @@
+div.container {
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #999999;
+    margin: 0 auto;
+    padding: 2rem 8% 100px;
+    width: 100%;
+}
+
+p.text {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    hyphens: auto;
+    line-height: 1.75;
+    orphans: 3;
+    overflow-wrap: break-word;
+    text-align: justify;
+    text-justify: inter-character;
+    word-wrap: break-word;
+}

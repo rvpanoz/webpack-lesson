@@ -16,13 +16,13 @@ module.exports = {
   output: {
     filename: '[name]-[hash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/' // for react-router
+    publicPath: '/'
   },
   devServer: {
     contentBase: './dist',
     open: true,
     port,
-    historyApiFallback: true // for react-router
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -82,7 +82,7 @@ module.exports = {
           }
         ]
       },
-      // Common Image Formats
+      // common Image Formats
       {
         test: /\.(?:ico|png|jpg|jpeg)$/,
         use: 'url-loader'
