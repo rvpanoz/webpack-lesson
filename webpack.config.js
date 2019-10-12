@@ -6,7 +6,6 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// define dev server port
 const port = process.env.PORT || 1221;
 
 module.exports = {
@@ -14,9 +13,13 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
-    filename: '[name]-[hash].bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    chunkFilename: '[name].js',
     publicPath: '/'
+  },
+  stats: {
+    cached: false
   },
   devServer: {
     contentBase: './dist',
@@ -29,7 +32,7 @@ module.exports = {
       template: "./src/index.html",
     }),
 
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin(),
   ],
   resolve: {
     alias: {
@@ -56,6 +59,18 @@ module.exports = {
               modules: true,
             },
           },
+        ],
+      },
+      // sass support
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // creates `style` nodes from JS strings
+          'style-loader',
+          // translates CSS into CommonJS
+          'css-loader',
+          // compiles Sass to CSS
+          'sass-loader',
         ],
       },
       // WOFF Font
@@ -89,25 +104,22 @@ module.exports = {
       }
     ],
   },
+  // optimization
   optimization: {
-    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
       cacheGroups: {
+        default: false,
+        vendors: false,
+        // vendor chunk
         vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get the name. E.g. node_modules/packageName/not/this/part.js
-            // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+          name: "vendor",
 
-            // npm package names are URL-safe, but some servers don't like @ symbols
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
+          // sync + async chunks
+          chunks: 'all',
+          // import file path containing node_modules
+          test: /node_modules/
+        }
       }
     }
-  },
+  }
 };

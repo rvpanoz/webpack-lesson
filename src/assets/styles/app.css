@@ -1,26 +1,58 @@
-@import 'https://fonts.googleapis.com/css?family=Ubuntu+Condensed';
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
-html {
-    height: auto;
-    width: 100%;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    height: 100%;
-    font-family: 'Ubuntu Condensed', sans-serif;
+  background-color: #fff;
+  font-family: 'Fira Sans', sans-serif;
+  display: flex;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+p {
+  font-size: 20px;
+  line-height: 18px;
+}
+
+.content {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    width: 600px;
+  }
+}
+
+.spinner {
+  display: inline-block;
+}
+
+.spinner::after {
+  content: ' ';
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 16px solid;
+  border-color: transparent #fff transparent;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
