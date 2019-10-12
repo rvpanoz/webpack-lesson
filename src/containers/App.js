@@ -2,21 +2,27 @@ import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 
+// load css as a webpack modules
+import styles from 'styles/app.css';
+import theme from 'styles/theme.scss';
+
 // lazy does not support named export
 const Home = lazy(() => import('components/Home'));
-const About = lazy(() => import('components/About'));
+const Page = lazy(() => import('components/Page'));
 
-const App = () => <section>
+const App = () => <div className={styles.app}>
     <ErrorBoundary>
-        <Router>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                </Switch>
-            </Suspense>
-        </Router>
+        <Suspense fallback={<div className={styles.spinner}></div>}>
+            <div className={styles.content}>
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/page" component={Page} />
+                    </Switch>
+                </Router>
+            </div>
+        </Suspense>
     </ErrorBoundary>
-</section>
+</div>
 
 export default App;
