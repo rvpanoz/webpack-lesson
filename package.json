@@ -4,8 +4,8 @@
   "description": "introduction to webpack",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_END=development webpack --config webpack.config.js --profile",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "build": "webpack --config webpack.config.prod.js --profile",
+    "start": "webpack-dev-server --config webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
