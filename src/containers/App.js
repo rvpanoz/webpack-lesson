@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 
 // load css as a webpack modules
-import styles from 'styles/app.css';
-import theme from 'styles/theme.scss';
+import styles from 'styles/app.scss';
 
 // lazy does not support named export
 const Home = lazy(() => import('components/Home'));

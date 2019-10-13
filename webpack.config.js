@@ -3,10 +3,12 @@
  */
 
 const path = require('path');
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const port = process.env.PORT || 1221;
+const port = process.env.PORT || 5599;
 
 module.exports = {
   mode: 'development',
@@ -32,7 +34,13 @@ module.exports = {
       template: "./src/index.html",
     }),
 
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+
     new BundleAnalyzerPlugin(),
+
+    new CleanWebpackPlugin()
   ],
   resolve: {
     alias: {
@@ -68,7 +76,12 @@ module.exports = {
           // creates `style` nodes from JS strings
           'style-loader',
           // translates CSS into CommonJS
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
           // compiles Sass to CSS
           'sass-loader',
         ],
