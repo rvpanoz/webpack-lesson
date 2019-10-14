@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 import styles from 'styles/page.scss';
 
 // load image as a webpack module
-import webpackBundlerImg from 'images/webpack.png'
+import webpackBundlerImg from 'images/webpack-bundler.jpeg'
 
-const Home = () => {
+const Page = () => {
     return (
         <div className={styles['article-text']}>
-            <h2>Home page</h2>
+            <h2>Page</h2>
             <p>
                 <img src={webpackBundlerImg} alt="webpack-bundler" />
             </p>
             <p>
-                Contrary to popular, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old
             </p>
             <hr />
-            <Link to="/page">Next page</Link>
+            <Link to="/">Back to home</Link>
         </div>
     )
 }
 
-export default Home
+export default Page
