@@ -16,6 +16,7 @@ module.exports = {
         chunkFilename: '[name].js',
         publicPath: '/'
     },
+    performance: { hints: false },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",

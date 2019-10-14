@@ -2,6 +2,9 @@ import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 
+// this component will not code splitted
+import AppLoader from 'components/AppLoader'
+
 // load css as a webpack modules
 import styles from 'styles/app.css';
 
@@ -11,7 +14,7 @@ const Page = lazy(() => import('components/Page'));
 
 const App = () => <div className={styles.app}>
     <ErrorBoundary>
-        <Suspense fallback={<div className={styles.spinner}></div>}>
+        <Suspense fallback={<AppLoader />}>
             <div className={styles.content}>
                 <Router>
                     <Switch>

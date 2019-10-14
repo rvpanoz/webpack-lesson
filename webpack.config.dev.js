@@ -11,23 +11,30 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const port = process.env.PORT || 5599;
 
 module.exports = {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    entry: './src/index.js',
+    // Chosen mode tells webpack to use its built-in optimizations accordingly.
+    mode: 'development', // "production" | "development" | "none"
+
+    // enhance debugging by adding meta info for the browser devtools
+    // source-map most detailed at the expense of build speed.
+    devtool: 'inline-source-map', // enum
+
+    // defaults to ./src   
+    entry: './src/index.js', // string | object | array
+
+    // Here the application starts executing and webpack starts bundling 
     output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        chunkFilename: '[name].js',
-        publicPath: '/'
+        filename: '[name].bundle.js', // the filename template for entry chunks
+        path: path.resolve(__dirname, 'dist'), // the target directory for all output files - must be an absolute path (use the Node.js path module)
+        publicPath: '/' // the url to the output directory resolved relative to the HTML page
     },
-    stats: {
-        cached: false
-    },
+
+    // development server configuration
     devServer: {
-        contentBase: './dist',
-        open: true,
+        contentBase: './dist', // boolean | string | array, static file locati
         port,
-        historyApiFallback: true
+        hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
+        noInfo: true, // only errors & warns on hot reload
+        historyApiFallback: true // true for index.html upon 404, object for multiple paths
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -38,19 +45,26 @@ module.exports = {
 
         new CleanWebpackPlugin()
     ],
+
+    // options for resolving module requests
     resolve: {
+        // a list of module name aliases
         alias: {
             components: path.resolve(path.join(__dirname, 'src', 'components')),
             images: path.resolve(path.join(__dirname, 'src', 'assets', 'images')),
             styles: path.resolve(path.join(__dirname, 'src', 'assets', 'styles')),
         },
     },
+
+    // configuration regarding modules
     module: {
         rules: [
+            // rules for modules (configure loaders, parser options, etc.)
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
+                    // the loader which should be applied, it'll be resolved relative to the context
                     loader: "babel-loader"
                 }
             },
@@ -112,5 +126,6 @@ module.exports = {
                 use: 'url-loader'
             }
         ],
-    }
+    },
+    performance: { hints: 'warning' }
 };
