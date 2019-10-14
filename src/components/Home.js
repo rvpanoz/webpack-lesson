@@ -1,16 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import styles from 'styles/page.css';
+
+// load scss as a module
+import styles from 'styles/page.scss';
 
 // load image as a webpack module
-import webpackImg from 'images/webpack.png'
+import webpackBundlerImg from 'images/webpack.png'
 
 const Home = () => {
     return (
-        <div className={styles.container}>
-            <h1>Hola!</h1>
-            <p><img src={webpackImg} alt="webpack" /></p>
-            <p><Link to="/page">next page</Link></p>
+        <div className={styles['article-text']}>
+            <h2>Home page</h2>
+            <p>
+                <img src={webpackBundlerImg} alt="webpack-bundler" />
+            </p>
+            <p>
+                Contrary to popular, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old
+            </p>
+            <hr />
+            <Link to="/page">Next page</Link>
         </div>
     )
 }
