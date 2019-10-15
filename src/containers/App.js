@@ -9,8 +9,8 @@ import AppLoader from 'components/AppLoader'
 import styles from 'styles/app.css';
 
 // lazy does not support named export
-const Home = lazy(() => import('components/Home'));
-const Page = lazy(() => import('components/Page'));
+const Home = lazy(() => import(/* webpackChunkName: "Home" */'components/Home'));
+const Page = lazy(() => import(/* webpackChunkName: "Page" */'components/Page'));
 
 const App = () => <div className={styles.app}>
     <ErrorBoundary>
