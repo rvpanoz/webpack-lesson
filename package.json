@@ -4,8 +4,8 @@
   "description": "introduction to webpack",
   "private": true,
   "scripts": {
-    "build": "webpack --config webpack.config.prod.js --profile",
-    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.babel.js --profile",
+    "start": "webpack-dev-server --config webpack.config.dev.babel.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,9 +31,8 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "@babel/register": "^7.6.2",
     "babel-loader": "^8.0.6",
-    "babel-node": "0.0.1-security",
-    "babel-register": "^6.26.0",
     "chalk": "^2.4.2",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^6.0.3",
