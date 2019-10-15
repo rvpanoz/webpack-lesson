@@ -5,7 +5,6 @@
 import path from 'path';
 import { BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 // define dev server port
 const port = process.env.PORT || 5599;
