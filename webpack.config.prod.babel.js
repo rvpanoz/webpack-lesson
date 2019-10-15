@@ -16,7 +16,7 @@ const prodConfig = {
     //     index: './src/index',
     //     anotherEntry: './src/components/Entry'
     // },
-    
+
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
@@ -120,7 +120,15 @@ const prodConfig = {
                 }
             }
         }
-    }
+    },
+
+     // shows performance hints
+     performance: { hints: false },
+
+     // https://webpack.js.org/configuration/stats/
+     stats: {
+         colors: false
+     },
 };
 
 export default prodConfig

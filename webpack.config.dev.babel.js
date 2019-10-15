@@ -11,6 +11,7 @@ const port = process.env.PORT || 5599;
 
 const config = {
     // the environment in which the bundle should run
+    // https://webpack.js.org/configuration/target/
     target: "web", // enum
 
     // chosen mode tells webpack to use its built-in optimizations accordingly.
@@ -29,11 +30,6 @@ const config = {
     //     index: './src/index',
     //     anotherEntry: './src/components/Entry'
     // },
-
-    // https://webpack.js.org/configuration/stats/
-    stats: {
-        colors: true
-    },
 
     // Here the application starts executing and webpack starts bundling 
     output: {
@@ -144,8 +140,13 @@ const config = {
         ],
     },
 
-     // shows performance hints
-     performance: { hints: false },
+    // shows performance hints
+    performance: { hints: false },
+
+    // https://webpack.js.org/configuration/stats/
+    stats: {
+        colors: true
+    },
 
      // optimization
      // https://webpack.js.org/guides/code-splitting/
